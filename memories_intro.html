@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Cherished Memories 💜</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Poppins:wght@300;400;600&family=Sniglet&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #CDB4DB, #FFC8DD, #BDE0FE);
+      background-size: 200% 200%;
+      animation: gradientShift 10s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .sparkle {
+      position: absolute;
+      opacity: 0.5;
+      animation: floatUp 6s infinite linear;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    .media-card {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 550px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 15px 35px rgba(90, 24, 154, 0.2);
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .title {
+      color: #5A189A;
+      font-family: 'Sniglet', cursive;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .handwritten-text {
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      color: #333;
+      line-height: 1.4;
+      margin-bottom: 30px;
+      background: #fffdf7;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+      background-image: repeating-linear-gradient(transparent, transparent 24px, rgba(123, 44, 191, 0.1) 25px);
+    }
+
+    /* Side-by-Side Button Group */
+    .button-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    /* Main Action Buttons (Purple) */
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      background: #7B2CBF;
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(123, 44, 191, 0.3);
+      flex: 1; 
+      min-width: 180px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #5A189A;
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 6px 15px rgba(123, 44, 191, 0.4);
+    }
+
+    /* Back Button (Outline Style) */
+    .back-btn {
+      background: transparent;
+      color: #7B2CBF;
+      border: 2px solid #7B2CBF;
+      margin-top: 20px;
+      box-shadow: none;
+      flex: none; /* Don't grow like the others */
+      width: auto;
+      min-width: 200px;
+    }
+
+    .back-btn:hover {
+      background: rgba(123, 44, 191, 0.1);
+      color: #5A189A;
+    }
+
+    /* Where the video appears */
+    #media-display {
+      margin-top: 20px;
+      transition: all 0.4s ease;
+    }
+
+    .memory-video {
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid #E0AAFF;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+  </style>
+</head>
+<body>
+
+<script>
+  const sparkles = ["✨", "💜", "🌸", "🐾", "🐈‍⬛"];
+  for (let i = 0; i < 20; i++) {
+    let s = document.createElement("div");
+    s.className = "sparkle";
+    s.innerText = sparkles[Math.floor(Math.random()*sparkles.length)];
+    s.style.left = Math.random()*100 + "vw";
+    s.style.fontSize = (12 + Math.random()*15) + "px";
+    s.style.animationDuration = (6 + Math.random()*6) + "s";
+    s.style.animationDelay = (Math.random()*5) + "s";
+    document.body.appendChild(s);
+  }
+</script>
+
+<div class="media-card">
+  <h1 class="title">Cherished Moments 💜</h1>
+  
+  <div class="handwritten-text">
+    Hey Kaitlynn,<br><br>
+    Every goofy laugh and quiet moment with you is my favorite memory. Watch this first, then check out our gallery! 🐈‍⬛
+  </div>
+
+  <div class="button-group">
+    <button class="btn" onclick="showVideo()">Play video first 🎬</button>
+    <a href="memories_gallery.html" class="btn">Relive Our Favorites 📸</a>
+  </div>
+
+  <div id="media-display"></div>
+
+  <button class="btn back-btn" onclick="window.location.href='dashboard.html'">⬅ Back to Dashboard</button>
+</div>
+
+<script>
+  function showVideo() {
+    const display = document.getElementById("media-display");
+    // Change 'your-memories-video.mp4' to your actual file name
+    display.innerHTML = `
+      <video class="memory-video" controls autoplay style="border-radius: 12px;">
+        <source src="Images/Memories.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    `;
+  }
+</script>
+
+</body>
+</html>

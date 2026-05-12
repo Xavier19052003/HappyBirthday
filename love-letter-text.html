@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Letter to You 💌</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Poppins:wght@300;400;600&family=Sniglet&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    
+    body {
+      background: linear-gradient(135deg, #CDB4DB, #FFC8DD, #BDE0FE);
+      background-size: 200% 200%;
+      background-attachment: fixed;
+      animation: gradientShift 10s ease infinite;
+      min-height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      padding: 30px 20px; overflow-x: hidden;
+    }
+    
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    
+    /* Floating background sparkles */
+    .sparkle {
+      position: absolute;
+      opacity: 0.5;
+      animation: floatUp 6s infinite linear;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Outer Glassmorphism Card */
+    .letter-container {
+      position: relative; z-index: 10; width: 100%; max-width: 800px; /* Made slightly wider to accommodate the long text comfortably */
+      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 255, 255, 0.5); border-radius: 20px; padding: 40px;
+      box-shadow: 0 15px 35px rgba(90, 24, 154, 0.2); text-align: center;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    @keyframes fadeInUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .title { color: #5A189A; font-family: 'Sniglet', cursive; font-size: 36px; margin-bottom: 25px; }
+    
+    /* Elegant Stationery Card */
+    .stationery-card {
+      background: #fffdf7; 
+      padding: 40px 30px; 
+      border-radius: 12px;
+      border: 2px dashed #CDB4DB;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      /* Ensure the card can scroll if the screen is too small */
+      max-height: 65vh;
+      overflow-y: auto;
+    }
+
+    /* Hide the scrollbar inside the card for a cleaner look */
+    .stationery-card::-webkit-scrollbar {
+      display: none;
+    }
+    .stationery-card {
+      -ms-overflow-style: none;  
+      scrollbar-width: none;  
+    }
+
+    .love-text {
+      font-family: 'Caveat', cursive; 
+      font-size: 28px; 
+      color: #3c096c; 
+      line-height: 1.6; /* Increased line-height for better readability */
+      text-align: center; 
+    }
+
+    /* Cute visual divider */
+    .divider {
+      font-size: 20px;
+      letter-spacing: 15px;
+      margin: 30px 0;
+      opacity: 0.7;
+    }
+
+    .signature {
+      font-family: 'Caveat', cursive; 
+      font-size: 32px;
+      color: #5A189A;
+      font-weight: bold;
+      margin-top: 30px;
+      text-align: right; 
+    }
+
+    /* Emphasized verse text */
+    .verse {
+      font-style: italic;
+      color: #7B2CBF;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .btn {
+      padding: 12px 25px; border: none; border-radius: 25px; background: #7B2CBF;
+      color: white; font-weight: 600; font-size: 16px; cursor: pointer; transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(123, 44, 191, 0.3); margin-top: 20px; display: inline-block;
+      text-decoration: none;
+    }
+    
+    .btn:hover { background: #5A189A; transform: scale(1.05) translateY(-2px); box-shadow: 0 6px 15px rgba(123, 44, 191, 0.4); }
+  </style>
+</head>
+<body>
+
+<script>
+  const sparkles = ["✨", "💜", "🌸", "🐾", "🐈‍⬛"];
+  for (let i = 0; i < 20; i++) {
+    let s = document.createElement("div");
+    s.className = "sparkle";
+    s.innerText = sparkles[Math.floor(Math.random()*sparkles.length)];
+    s.style.left = Math.random()*100 + "vw";
+    s.style.fontSize = (12 + Math.random()*15) + "px";
+    s.style.animationDuration = (6 + Math.random()*6) + "s";
+    s.style.animationDelay = (Math.random()*5) + "s";
+    document.body.appendChild(s);
+  }
+</script>
+
+<div class="letter-container">
+  <h1 class="title">For My Favorite Person 💌</h1>
+  
+  <div class="stationery-card">
+    <div class="love-text">
+      My Dearest Kaitlynn,<br><br>
+      
+      To my beloved and beautiful angel 💜💛<br><br>
+
+      Happy Birthday, my angel pie. I love you so very, very, very much, and I’m so glad I get to be here on this absolutely wonderful day, because if it wasn’t for this day, I would not have met my absolutely adorable Kaity Pops, my future wife.<br><br>
+
+      I’ll never forget the day I messaged you and met you. I never ever thought we’d go on the rollercoaster we have, but I’d never change it for a second. Meeting you is the best thing that’s ever happened to me. No one has loved me the way you love me. You mean the absolute world to me, and in fact, there aren’t enough words to describe how much you mean to me. And even better, there isn’t a word to describe how much I love you.<br><br>
+
+      You’ve given me your unwavering love and support no matter what, through the hardest and easiest of times. I’ll forever be grateful to you for the rest of my life, even until my dying days and after that.<br><br>
+
+      Bubs, I never thought I’d be where I am right now in my life, with life, campus, and everything else, and I never expected us in my wildest dreams, but I’m ever so grateful that I do have you. That day I met you was definitely God answering my prayers, and I just hadn’t known it at the time.<br><br>
+
+      And I wasn’t the best, and sometimes even now I still am not the best, but I will always love you no matter what. I know I’ve said it already, but I cannot ever begin to describe how much you mean to me, and I want you to know that from the apex of my heart, I will always love you no matter what.<br><br>
+
+      My life feels so cold and empty without you. I remember those days without you and how lonely and horrible they felt. They genuinely were the worst days ever. But I’m not writing this, or well, typing this, to speak about those days. I’m here to speak about how much of a light you are in my life.<br><br>
+
+      Sometimes I look at you and genuinely get excited for the future, because if loving you now already feels this amazing, I can’t even imagine what life together will feel like years from now. You make life feel safer, warmer, and easier to get through. Even on the worst days, hearing your voice or seeing your message changes everything for me.<br><br>
+
+      You know those nights we spend on the phone for hours and hours, I’d never sacrifice them for the world. Being on the phone and seeing your beautiful face means so much to me. Hearing your laugh that makes me smile and laugh, hearing all the stories and drama, all the shouting, even that I love. I love just sleeping there, and when you fall asleep and I’m awake and I just stare at you and how beautiful and angelic you look, because wow, it always amazes me how someone so perfect and beautiful can even sleep just as perfectly and beautifully. It always amazes me, my love.<br><br>
+
+      Also, I love it when you send all those random cute photos or videos. They literally are the highlight of my days and moments. Just everything you do for me, even the tiniest things, like waking me up, waking up early for me, staying up late for me, or even just keeping me company, I don’t know, it just shows me how endlessly you love me, and I love that about you.<br><br>
+
+      You are like a damn sun in my life. With you, everything feels so right and perfect and aligned. You are the light at the end of my tunnel, always keeping me on track and always supporting me no matter what. And I love the fact that you are always there to support me, literally no matter how bad things are or even how busy you are. You’re always there for me.<br><br>
+
+      You’re the glue that keeps your family together, like I always say. I don’t know where they would be without you. You’re there for everyone, always, 24/7, and today, and not only today but every day onwards, I’m going to be the one that’s there for you no matter what.<br><br>
+
+      Baby, you have no idea how much you mean to me and how much I love you. I want to wish you the best and most wonderful, blessed birthday. Thank you for everything you do for me, for being there, loving me, and forgiving me.<br><br>
+
+      So today, on your wonderful birthday, I’d like to say thank you for always being my present, the best gift I could’ve ever asked for in my life. So on your birthday, I’d like to leave you with this:<br>
+
+      <div class="verse">
+        “The LORD bless you and keep you;<br>
+        the LORD make His face shine on you and be gracious to you;<br>
+        the LORD turn His face toward you and give you peace.”<br>
+        Numbers 6:24–26
+      </div>
+
+      I thank God every day for you being in my life and for the light you shine in it.<br>
+      
+      <div class="divider">🐾 ✨ 🐾</div>
+      
+    </div>
+
+    <div class="signature">
+      Forever yours,<br>
+      Ethan Pops 💛🐈‍⬛
+    </div>
+  </div>
+
+  <button class="btn" onclick="window.location.href='love-letter-intro.html'">⬅ Back to Video</button>
+  <button class="btn" onclick="window.location.href='dashboard.html'" style="background: transparent; border: 2px solid #7B2CBF; color: #7B2CBF; margin-left: 10px; box-shadow: none;">Dashboard 🎀</button>
+</div>
+
+</body>
+</html>

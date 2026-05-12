@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorite Memories Gallery 📸💜</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Poppins:wght@300;400;600&family=Sniglet&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #CDB4DB, #FFC8DD, #BDE0FE);
+      background-size: 200% 200%;
+      animation: gradientShift 10s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating background sparkles */
+    .sparkle {
+      position: absolute;
+      opacity: 0.5;
+      animation: floatUp 6s infinite linear;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Gallery card */
+    .gallery-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 800px; /* Made slightly wider to fit the bigger images and text nicely */
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 15px 35px rgba(90, 24, 154, 0.2);
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .title {
+      color: #5A189A;
+      font-family: 'Sniglet', cursive; 
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    /* THE FIX: Applied cursive font to intro text */
+    .handwritten-text {
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      color: #333;
+      line-height: 1.4;
+      margin-bottom: 30px;
+      background: #fffdf7;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+      background-image: repeating-linear-gradient(transparent, transparent 24px, rgba(123, 44, 191, 0.1) 25px);
+    }
+
+    /* Main gallery items container */
+    .gallery-grid {
+      display: flex;
+      flex-direction: column; 
+      gap: 30px; 
+      margin-top: 30px;
+      max-height: 60vh; 
+      overflow-y: auto; 
+      padding-right: 10px; 
+      -ms-overflow-style: none; 
+      scrollbar-width: none; 
+    }
+
+    .gallery-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .memory-item {
+      display: flex;
+      align-items: center; 
+      gap: 25px; /* Slightly more space between image and text */
+      background: #fffdf7; 
+      padding: 25px; /* Increased padding so text doesn't hit edges */
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .memory-item:hover {
+      transform: scale(1.02) translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .memory-item:nth-child(even) {
+      flex-direction: row-reverse; 
+    }
+
+    /* THE FIX: Made images bigger and stopped them from shrinking */
+    .memory-item img {
+      width: 170px; 
+      height: 170px; 
+      min-width: 170px; /* Forces the browser to NEVER shrink this image */
+      flex-shrink: 0; /* Prevents flexbox crushing */
+      object-fit: cover; 
+      border-radius: 12px;
+      border: 3px solid #E0AAFF; 
+    }
+
+    /* THE FIX: Cursive font applied to description text */
+    .memory-item div.desc {
+      flex: 1; 
+      text-align: left; 
+      color: #333;
+      line-height: 1.5;
+      font-family: 'Caveat', cursive; /* Replaced Poppins with Caveat */
+      font-size: 24px; /* Increased size so it's easy to read */
+    }
+
+    .paw-print {
+      display: block;
+      font-size: 16px;
+      opacity: 0.5;
+      text-align: right;
+      margin-top: 15px;
+    }
+
+    .back-btn {
+      margin-top: 50px; 
+      padding: 10px 25px;
+      border: 2px solid #7B2CBF;
+      border-radius: 25px;
+      background: transparent;
+      color: #7B2CBF;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 1s; 
+      opacity: 0;
+      text-decoration: none; 
+      display: inline-block;
+    }
+
+    .back-btn:hover {
+      background: rgba(123, 44, 191, 0.15);
+      transform: scale(1.05);
+    }
+
+    /* FLAWLESS MOBILE FIX: Stack the image and text if the screen gets too small */
+    @media (max-width: 600px) {
+      .memory-item, .memory-item:nth-child(even) {
+        flex-direction: column;
+        text-align: center;
+      }
+      .memory-item div.desc {
+        text-align: center;
+      }
+      .paw-print {
+        text-align: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<script>
+  const sparkles = ["✨", "💜", "🌸", "🐾", "🐈‍⬛"];
+  for (let i = 0; i < 20; i++) {
+    let s = document.createElement("div");
+    s.className = "sparkle";
+    s.innerText = sparkles[Math.floor(Math.random()*sparkles.length)];
+    s.style.left = Math.random()*100 + "vw";
+    s.style.fontSize = (12 + Math.random()*15) + "px";
+    s.style.animationDuration = (6 + Math.random()*6) + "s";
+    s.style.animationDelay = (Math.random()*5) + "s";
+    document.body.appendChild(s);
+  }
+</script>
+
+<div class="gallery-container">
+  <h1 class="title">Favorite Memories Gallery 📸💜</h1>
+  
+  <div class="handwritten-text">
+    <p>Scroll through some of our most cherished moments... 💜💛</p>
+  </div>
+
+  <div class="gallery-grid">
+    
+    <div class="memory-item">
+      <img src="Images/FirstDate.jpeg" alt="First Date Night Picture">
+      <div class="desc">
+        So this is a picture of our very first time meeting.. i mean i have to begin here, how could we ever forget the day, the day i fnally got to hold moonlight in my hands, the very first day i saw my future in front of me. I love the picture and i love you just as much as i love holding you 🐾
+        <div class="paw-print">🐾</div>
+      </div>
+    </div>
+
+    <div class="memory-item">
+      <img src="Images/FirstImg.jpeg" alt="That Funny Beach Day Picture">
+      <div class="desc">
+        So this is one of my most favourite photos of you, i know its supposed to be our memories, but this is a core memory for me, its one of the first pictures i ever saw of you and i was just in awe of your utter beauty...and the scary part is that your beauty still mesmerises me till this day. 🐈‍⬛
+        <div class="paw-print">🐾</div>
+      </div>
+    </div>
+
+    <div class="memory-item">
+      <img src="Images/MilkImg.jpg" alt="Lazy Cozy Afternoon Picture">
+      <div class="desc">
+       This is also definitely one of my favourite memories! This one where you stacked all the Milk Cartons, and made me even guess which one was empty and not, i allways love how creative you are and how you just come up with these random games!!!!!💜
+        <div class="paw-print">🐾</div>
+      </div>
+    </div>
+    
+    <div class="memory-item">
+      <img src="Images/SmileImg.jpg" alt="Our Favorite Adventure Picture">
+      <div class="desc">
+        This is also one of my most favourites pictures, because its the day where i fell in love with your smile, your beautiful smile and all its shine, its perfection and just everything about you that took my breath away✨
+        <div class="paw-print">🐾</div>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="memories_intro.html" class="back-btn">
+    ⬅ Back to Memories
+  </a>
+
+</div>
+
+</body>
+</html>

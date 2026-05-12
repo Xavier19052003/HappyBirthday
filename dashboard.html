@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaitlynn's Dashboard 💜</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Poppins:wght@300;400;600&family=Sniglet&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #CDB4DB, #FFC8DD, #BDE0FE);
+      background-size: 200% 200%;
+      animation: gradientShift 10s ease infinite;
+      
+      /* THE MOBILE FIX: Allows scrolling if needed and stops content from disappearing */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      overflow-y: auto; 
+      padding: 40px 20px; 
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .sparkle {
+      position: absolute;
+      opacity: 0.5;
+      animation: float 6s infinite linear;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    .netflix-container {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      width: 100%;
+      max-width: 800px;
+      margin: auto; 
+    }
+
+    .netflix-title {
+      color: #5A189A;
+      font-family: 'Sniglet', cursive;
+      font-size: 36px;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+      /* FIXED ANIMATION: 'both' ensures it doesn't get stuck invisible */
+      animation: fadeInDown 1s ease-out both;
+    }
+
+    .profile-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      /* FIXED ANIMATION: Replaced opacity:0 with animation-fill-mode */
+      animation: fadeInUp 1s ease-out both;
+    }
+
+    .profile:nth-child(1) { animation-delay: 0.2s; }
+    .profile:nth-child(2) { animation-delay: 0.4s; }
+    .profile:nth-child(3) { animation-delay: 0.6s; }
+    .profile:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeInDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 16px;
+      background: #7B2CBF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+      box-shadow: 0 8px 20px rgba(90, 24, 154, 0.3);
+      border: 4px solid transparent;
+      transition: all 0.3s ease;
+      overflow: hidden; 
+      position: relative;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-name {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #5A189A;
+      transition: color 0.3s ease;
+    }
+
+    .profile:hover {
+      transform: scale(1.1);
+    }
+
+    .profile:hover .avatar {
+      border-color: #fff;
+      box-shadow: 0 12px 25px rgba(90, 24, 154, 0.5);
+    }
+
+    .profile:hover .profile-name {
+      color: #3c096c;
+    }
+
+    .back-home-btn {
+      margin-top: 50px;
+      padding: 10px 25px;
+      border: 2px solid #7B2CBF;
+      border-radius: 25px;
+      background: transparent;
+      color: #7B2CBF;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      /* FIXED ANIMATION */
+      animation: fadeInUp 1s ease-out both;
+      animation-delay: 1s; 
+    }
+
+    .back-home-btn:hover {
+      background: rgba(123, 44, 191, 0.15);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .avatar { width: 100px; height: 100px; font-size: 45px; }
+      .netflix-title { font-size: 28px; margin-bottom: 25px; }
+      .profile-grid { gap: 15px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<script>
+  const sparkles = ["✨", "💜", "💛", "🐾"];
+  for (let i = 0; i < 20; i++) {
+    let s = document.createElement("div");
+    s.className = "sparkle";
+    s.innerText = sparkles[Math.floor(Math.random()*sparkles.length)];
+    s.style.left = Math.random()*100 + "vw";
+    s.style.fontSize = (10 + Math.random()*15) + "px";
+    s.style.animationDuration = (6 + Math.random()*6) + "s";
+    s.style.animationDelay = (Math.random()*5) + "s";
+    document.body.appendChild(s);
+  }
+</script>
+
+<div class="netflix-container">
+  <h1 class="netflix-title">What would you like to open? 🐈‍⬛</h1>
+
+  <div class="profile-grid">
+    
+    <div class="profile" onclick="window.location.href='our-song.html'">
+      <div class="avatar" style="background: #E0AAFF;">🎧</div>
+      <div class="profile-name">Our Song</div>
+    </div>
+
+    <div class="profile" onclick="window.location.href='memories_intro.html'">
+      <div class="avatar" style="background: #CDB4DB;">📸</div>
+      <div class="profile-name">Memories</div>
+    </div>
+
+    <div class="profile" onclick="window.location.href='reasons-why.html'">
+      <div class="avatar" style="background: #BDE0FE;">💖</div>
+      <div class="profile-name">Reasons Why</div>
+    </div>
+
+    <div class="profile" onclick="window.location.href='love-letter-intro.html'">
+      <div class="avatar" style="background: #FFC8DD;">💌</div>
+      <div class="profile-name">Love Letter</div>
+    </div>
+
+  </div>
+
+  <button class="back-home-btn" onclick="window.location.href='index.html'">
+    ⬅ Back to Envelope
+  </button>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Letter to You 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Poppins:wght@300;400;600&family=Sniglet&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: linear-gradient(135deg, #CDB4DB, #FFC8DD, #BDE0FE);
+      background-size: 200% 200%;
+      background-attachment: fixed;
+      animation: gradientShift 10s ease infinite;
+      min-height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      padding: 30px 20px; overflow-x: hidden;
+    }
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    
+    .letter-container {
+      position: relative; z-index: 10; width: 100%; max-width: 650px;
+      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 255, 255, 0.5); border-radius: 20px; padding: 40px;
+      box-shadow: 0 15px 35px rgba(90, 24, 154, 0.2); text-align: center;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    @keyframes fadeInUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .title { color: #5A189A; font-family: 'Sniglet', cursive; font-size: 36px; margin-bottom: 25px; }
+    
+    /* The large notepad area for your long paragraph */
+    .long-paragraph {
+      font-family: 'Caveat', cursive; font-size: 26px; color: #333; line-height: 1.6;
+      text-align: left; background: #fffdf7; padding: 30px; border-radius: 12px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+      background-image: repeating-linear-gradient(transparent, transparent 31px, rgba(123, 44, 191, 0.15) 32px);
+      /* Aligning the text to sit perfectly on the lines */
+      background-position: 0 10px;
+    }
+
+    /* FORMATTING FOR THE NUMBERED LIST */
+    .long-paragraph ol {
+      font-family: 'Caveat', cursive; /* Forces the cursive font on the list container */
+      margin-left: 35px; /* Indents the numbers */
+      margin-top: 20px; /* Space before the list starts */
+      margin-bottom: 20px; /* Space after the list ends */
+    }
+
+    .long-paragraph li {
+      font-family: 'Caveat', cursive; /* Forces the cursive font on the individual list items */
+      margin-bottom: 15px; /* Adds breathing room between each reason */
+      padding-left: 8px; /* Adds a little space between the number and your text */
+    }
+
+    .btn {
+      padding: 12px 25px; border: none; border-radius: 25px; background: #7B2CBF;
+      color: white; font-weight: 600; font-size: 16px; cursor: pointer; transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(123, 44, 191, 0.3); margin-top: 30px; display: inline-block;
+    }
+    .btn:hover { background: #5A189A; transform: scale(1.05) translateY(-2px); box-shadow: 0 6px 15px rgba(123, 44, 191, 0.4); }
+  </style>
+</head>
+<body>
+
+<div class="letter-container">
+  <h1 class="title">My Letter to You 💌</h1>
+  
+  <div class="long-paragraph">
+    Dear Kaitlynn,<br><br>
+    
+    Hi, my Baby Loves, I am writing this to you to tell you all the reasons why I love you 💜💛
+    
+    <ol>
+      <li>One of the things I love the most about you has to be ( and you should know this) is your sweet and kind heart 100%, you’re always so kind even when you don’t have to be, your always so giving when you shouldn’t and you’re just always so loving even when you shouldn’t have to be.</li>
+      
+      <li>The other thing I love about you is your smile, its so radiant and warm and literally it warms me up every time I’ve seen it, I’ve never seen a more beautiful smile in my life, its literally so perfect, and so bright that the sun even gets jealous at it as it should.</li>
+      
+      <li>Another thing I love about you is your eyes, its so shiny and sparkly and I love it when you look at me and it just shines, you know that screen recording of yours, and I see it all the time, and it just lights me up every single time. I love it and I could stare into your eyes all day and everyday without fail.</li>
+      
+      <li>I love how you’re always so calm with me…nowadays, you’re always just so patient and understanding and you always just explain it to me even when I’m wrong or when I do something wrong, I love how you have patience with me and I really appreciate it.</li>
+      
+      <li>The other thing that I love, is how you’re always listening to me no matter how long I yap for or whatever nonsense I’m yapping about, I just love how you always just sit there and listen to my nonsense no matter what, you’re literally the sweetest girl ever.</li>
+      
+      <li>Another thing I love about you and probably one of my favourite, has to be how much you actually love me, you love me with all your heart and its just a breath of fresh air, I’ve seriously and honestly never ever met anyone that loves me the way you do or the amount, sometimes I even think you love me more than my own mommy, because you’re just the best ever, you love fully, openly and honestly and yeah I have no words to describe how much it means to me.</li>
+    </ol>
+    
+    Love always,<br>
+    Ethan Pops💛🐈‍⬛
+  </div>
+
+  <button class="btn" onclick="window.location.href='dashboard.html'">⬅ Back to Dashboard</button>
+</div>
+
+</body>
+</html>
